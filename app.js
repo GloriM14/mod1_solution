@@ -1,7 +1,9 @@
 (function (){
 'use strict';
   angular.module('LunchCheck' ,[])
-.controller('LunchCheckController', function($scope){
+.controller('LunchCheckController',LunchCheckController);
+
+ function LunchCheckController($scope){
 $scope.meals = "";
 $scope.totalvalue=0;
 $scope.display= function(){
@@ -44,6 +46,7 @@ $scope.checkspaces= function(array){
   }
     return totalws;
 }
-});
 
+
+}
 })();
