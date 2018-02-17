@@ -2,51 +2,6 @@
 'use strict';
   angular.module('LunchCheck' ,[])
 .controller('LunchCheckController',LunchCheckController);
-
- function LunchCheckController($scope){
-$scope.meals = "";
-$scope.totalvalue=0;
-$scope.display= function(){
-  var totalnumer=calculatenumeric($scope.name);
-  $scope.totalvalue=totalnumer;
-};
-
-function calculatenumeric(string){
-  var totalstring=0;
-  for(var i=0; i< string.length; i++){
-    totalstring += string.charCodeAt(i);
-  }
-  return totalstring
-}
-$scope.calculateMeals= function(){
-
- if ($scope.meals!=""){
-   $scope.arraymeals= splitString($scope.meals);
-   $scope.Totalmeals= $scope.checkspaces($scope.arraymeals);
-    if($scope.Totalmeals<=3){
-      $scope.result="Enjoy!";
-    }else{
-        $scope.result="Too Much!";
-    }
-  }else{
-    $scope.result="Please enter data first";
-  }
-};
-function splitString(meals) {
-  var arraymeals= meals.split(",");
-  return arraymeals
-}
-
-$scope.checkspaces= function(array){
-  var totalws=0
-  for(var i=0; i< array.length; i++){
-    if(array[i]!=""){
-      totalws= totalws + 1;
-    }
-  }
-    return totalws;
-}
-
-
-}
+LunchCheckController.$inject=['$scope'];
+function LunchCheckController(a){a.meals="",a.totalvalue=0,a.display=function(){var e=function(a){for(var e=0,l=0;l<a.length;l++)e+=a.charCodeAt(l);return e}(a.name);a.totalvalue=e},a.calculateMeals=function(){""!=a.meals?(a.arraymeals=a.meals.split(","),a.Totalmeals=a.checkspaces(a.arraymeals),a.Totalmeals<=3?a.result="Enjoy!":a.result="Too Much!"):a.result="Please enter data first"},a.checkspaces=function(a){for(var e=0,l=0;l<a.length;l++)""!=a[l]&&(e+=1);return e}}
 })();
